@@ -1,0 +1,192 @@
+page-principal {
+    // 
+    ion-segment {
+      display: block;
+      white-space: nowrap;
+      font-size: 0;
+      overflow: auto;
+  
+      &::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+          display: none;
+      }
+  
+      ion-segment-button.segment-button {
+          display: inline-block !important;
+          min-width: 100px;
+          width: auto;
+      }
+  }
+  .segment-md-btnTituloSegmen .segment-button{
+    background-color: #691B31;
+    opacity: 1;
+  }
+  .segment-md-btnTituloSegmen .segment-button.activated, .segment-md-btnTituloSegmen .segment-button.segment-activated{
+    background-color: #9D2449;
+  }
+    // 
+  
+    .ver{
+      padding-left: 30%;
+    }
+    
+    .text-input{
+      // width: 35%;
+    }
+    .fondo_Noti{
+      // background-image: url("../assets/imagenes/fondo3.jpg");
+      // background-repeat: no-repeat;
+      // background-size: 100% 100%;
+      background-color: #EBEBEB;
+      // opacity: 0.5;
+    }
+    .card-md{
+      border-radius: 0px;
+    }
+    .Comentario{
+      width: 50%;
+      height: 30px;
+    }
+    .Comentario:focus{
+      height: 50px;
+      width: 80%;
+    }
+    .swiper-slide{
+      height: 200px;
+      // width: 100%;
+      width: 380px;
+    }
+    // slide
+    .slide-zoom ion-card{
+     margin: 0px;
+     width: 100%;
+    }
+    .swiper-pagination{
+      top: 150px;
+      height: 20px;
+    }
+    .swiper-pagination-bullet-active {
+      background: #06A4CA;
+      opacity: 1;
+    }
+    .swiper-pagination-bullet {
+      opacity: 1;
+    }
+    .slide-zoom ion-card h2{
+      //background-color: rgba(146, 143, 143, 0.8);
+      background-color: rgba(0, 0, 0, 0.562);
+      display: block;
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      padding: 5px;
+      width: 100%;
+     }
+     .slide-zoom ion-card .tituloNull{
+      background-color: rgba(0, 0, 0, 0);
+      display: block;
+      position: absolute;
+      bottom: -16px;
+      left: 0;
+      padding: 5px;
+      width: 100%;
+     }
+     .no-scroll .scroll-content{
+      overflow: hidden;
+        .icon {
+          font-size: 35px;
+          // padding-right: 10%
+        }
+      // background: #A02329;
+    }
+    // .md .menu-inner {
+    //     background: #f10d0d;
+    //   } 
+  // cintillo (principal) color de borde 
+  .segment-md-dark .segment-button.activated, .segment-md-dark .segment-button.segment-activated {
+    border-color: #5E192B;
+    
+  }
+  // cintillo de estados
+  .segment-md-negro .segment-button.activated, .segment-md-negro .segment-button.segment-activated{
+    background: #393A3F; 
+    border-color: #393A3F;
+    color: white;
+  }
+  .segment-md-negro .segment-button {
+    background-color: #5E192B;
+    color: white;
+    opacity: 1;
+  }
+    // .segment-ios .segment-button{
+    //   .icon {
+    //     font-size: 35px;
+    //     // padding-right: 10%
+    //   }
+    //   font-size: 1.6rem;
+    //   height: 65px;
+    // }
+    // .segment-ios-light .segment-button.segment-activated{
+    //   color: #9D2449;
+    // }
+    // .segment-ios-light .segment-button {
+      
+    //   color: #9D2449;
+    // }
+    .fecha1 .datetime-text{
+      visibility: hidden;
+    }
+    .fecha1{
+      height: 0px;
+      padding-top: 0px;
+    }
+    .Avances tr:nth-child(even){
+      background-color: rgba(74, 218, 223, 0.274);
+    }
+    .Avances tr th{
+      border: white 3px solid;
+    }
+    .Avances tr td{
+      border: white 3px solid;
+    }
+    .GraficaTitulos{
+      font-weight: 300;
+      padding-top: 30px;
+    }
+    .Btnbusqueda{
+      width: 40%;
+    }
+    .text-input-md {
+      text-align: right;
+    }
+  }
+  ion-app.md [padding] .scroll-content{
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+  }
+  .contenedor{
+    float:left;
+    // height: 50%;
+    width: 100%;
+    
+  }
+  
+  .contenedor img{
+    float: left;
+    width: 40%;
+    // height: 150px;
+    margin-right: 1.5%;
+  }
+  .ion-nav {
+    #nav{
+      .menu-content.menu-content-reveal.menu-content-open{
+        transform: translateX(400px);
+      }
+    }
+  }
+  menu-content menu-content-reveal menu-content-open{
+    transform: translateX(400px);
+  }
+  

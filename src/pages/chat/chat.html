@@ -1,0 +1,93 @@
+<!--
+  Generated template for the ChatPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header >
+  <!-- [style.backgroundColor]="colorP"color="principalGob" -->
+  <ion-toolbar color="light">
+    <!-- <div [style.backgroundColor]="cosecundario"> -->
+      <button ion-button menuToggle (click)="openMenu()">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>
+        Chat
+      </ion-title>
+      <ion-buttons end>
+        <!-- <button ion-button icon-only color="royal" (click)="notificaion()" id="notifi" style=" display: none; ">
+        </button> -->
+        <button ion-button icon-only (click)="presentPopover($event)">
+          <ion-icon name="more"></ion-icon>
+        </button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content  padding id="content">
+  <!-- <div *ngFor ="let chats of chat">
+    <ion-card color="verdeChat" *ngIf="chats.usuario==username">
+      <ion-card-header>
+        {{chats.usuario}}
+      </ion-card-header>
+      <ion-card-content>
+        {{chats.mensaje}}
+      </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="chats.usuario!=username">
+        <ion-card-header>
+          {{chats.usuario}}
+        </ion-card-header>
+        <ion-card-content>
+          {{chats.mensaje}}
+        </ion-card-content>
+      </ion-card>
+  </div> -->
+  <ion-infinite-scroll position="top" threshold="1%" (ionInfinite)="onInfiniteScroll($event)">
+      <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>     
+  <div style="height: 100%;" id="fin">
+    <ion-grid>
+      <ion-row *ngFor="let chats of itemList">
+        <!-- <h5 *ngIf="chats.fecha == '2018-09-28' && fechaStatus==true" (onload)="toggleToFalse()">{{fechaStatus}}</h5> -->
+        <!-- fecha -->
+        <!-- <ion-label>From true to false</ion-label>
+        <ion-toggle [(ngModel)]="booleanFlag1" (ionChange)="toggleToFalse()" color="secondary"></ion-toggle> -->
+
+        <!-- <ion-label>From false to true</ion-label>
+        <ion-toggle [(ngModel)]="booleanFlag2" (ionChange)="toggleToTrue()" color="secondary"></ion-toggle> -->
+
+        <!-- <ion-badge color="secondary">{{chats.fecha}}</ion-badge> -->
+            <!--  -->
+        <ion-col col-9 *ngIf="chats.usuario!=username" class="message" [ngClass]="{'mymessage': chats.usuario === username, 'othermessage': chats.usuario!=username}" >
+          <span class="user_name">{{ chats.usuario }}</span>
+          <br>
+          <span>{{ chats.mensaje }}</span>
+          <div class="time">{{chats.hora}}</div>
+        </ion-col>
+        <ion-col offset-3 col-9 *ngIf="chats.usuario==username" class="message" [ngClass]="{'mymessage': chats.usuario === username, 'othermessage': chats.usuario!=username}"  >
+          <span class="user_name">{{ chats.usuario}}</span>
+          <br>
+          <span>{{ chats.mensaje }}</span>
+          <div class="time">{{chats.hora}}</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    
+    <div id="content-end" style="height: 10px;"></div>
+    <div id="content-end" style="height: 1000px;" *ngIf="scrolver"></div>
+    </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-textarea placeholder="Escribe un mensaje aquí" [(ngModel)]="message" ></ion-textarea>
+    <ion-buttons end>
+      <button ion-button icon-right (click)="sendMessage()" [disabled]="!message" >
+        <!-- Enviar -->
+        <ion-icon name="send" style=" font-size: 25px;"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

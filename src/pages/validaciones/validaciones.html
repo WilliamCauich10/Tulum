@@ -1,0 +1,263 @@
+<!--
+  Generated template for the ValidacionesPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="light">
+    <ion-title>Seguimiento</ion-title>
+   <!--  <ion-buttons end>
+      <button ion-button icon-only color="royal" (click)="agregar('Validado', id)" *ngIf="agreagarV">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-button icon-only color="royal" (click)="agregar('Proceso', id)" *ngIf="agreagarP">
+        <ion-icon name="add"></ion-icon>
+      </button>
+      <button ion-button icon-only color="royal" (click)="agregar('Atendido', id)" *ngIf="agreagarA">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>   -->
+  </ion-navbar>
+  <ion-toolbar no-border-top color="blanco" >
+      <ion-segment [(ngModel)]="pet" color="turismoAzul1" >
+        <ion-segment-button value="Validado" (click)="cambioSegment('Validado')" style="font-size: 15px; height: 42px">
+          Validado
+        </ion-segment-button>
+        <ion-segment-button value="Proceso" (click)="cambioSegment('Proceso')" style="font-size: 15px; height: 42px">
+          En Proceso
+        </ion-segment-button>
+        <ion-segment-button value="Atendido" (click)="cambioSegment('Atendido')" style="font-size: 15px; height: 42px">
+          Atendido
+        </ion-segment-button>
+      </ion-segment>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchCase="'Validado'">
+        <!-- <div class="" *ngIf="users?.length == 0" > -->
+        <ion-card  *ngIf="reportesResults?.length == 0" >
+            <ion-card-title style="text-align: center;">
+                <img src="./assets/imagenes/Logo_Notas.jpg" style=" width: 80%; height: 70%; padding-left: 25%; padding-bottom: 8%;"  />
+              En proceso de 
+              <p style="    font-size: 30px; color: black; font-weight: 350">
+                Actualización
+              </p>
+            </ion-card-title>
+        </ion-card>
+        <!-- <ion-badge color="{{color}}">NEUTRO</ion-badge> -->
+      <!--   -->
+      <ion-card *ngFor="let report of reportesResults" >
+          <ion-item >
+            <ion-avatar item-start>
+              <img src="https://inmonitor.red70s.net/app_medios/{{report.url}}" style="display: block;margin-left: auto;margin-right: auto;" >
+            </ion-avatar>
+            <table style="width: 100%">
+              <tr>
+                <td style="width: 70%;">
+                    <h2>{{report.Nombre_Us}} {{report.Ape_Pater_Us}}</h2>
+                </td>
+                <td style="text-align: right">
+                  <ion-note *ngIf="report.minutos <= 0" >
+                    {{report.segundos}}s ago
+                  </ion-note> 
+                  <ion-note *ngIf="report.hora <= 0 && report.minutos > 0" >
+                    {{report.minutos}}m ago
+                  </ion-note> 
+                  <ion-note  *ngIf="report.hora > 0 && report.dias <= 0">
+                    {{report.hora}}h ago
+                  </ion-note>    
+                  <ion-note  *ngIf="report.dias > 0 && report.semanas <= 0">
+                    {{report.dias}}d ago
+                  </ion-note>
+                  <ion-note  *ngIf="report.semanas > 0">
+                    {{report.semanas}}w ago
+                  </ion-note>                 
+                  <!-- <ion-note  >
+                    1w ago
+                  </ion-note> -->
+                </td>
+              </tr>
+              <tr>
+                <td> 
+                  <!-- <p>Septiembre 4, 2018</p> -->
+                  <p>{{meses[report.fecha.substring(5,7)-1]}} {{report.fecha.substring(8,10)}}, {{report.fecha.substring(0,4)}}</p> 
+                </td>
+                <!-- <td style="text-align: right"> -->
+                    <!-- <ion-badge color="secondary"  *ngIf="blog.Condicion=='1'">POSITIVO</ion-badge>
+                    <ion-badge color="danger" *ngIf="blog.Condicion=='2'">NEGATIVO</ion-badge>
+                    <ion-badge color="gris" *ngIf="blog.Condicion=='3'">NEUTRO</ion-badge> -->
+                    <!-- <ion-badge color="gris">NEUTRO</ion-badge> -->
+                <!-- </td> -->
+              </tr>
+            </table>
+          </ion-item>  
+          <!-- <img src="https://inmonitor.red70s.net/app_medios//assets/img/perfiles/avatar.png" style="height: 200px;" imageViewer fullResImage > -->
+          <img src="https://inmonitor.red70s.net/app_medios{{report.ruta}}" style="height: 250px;  background-size: cover;" imageViewer fullResImage >
+          <ion-card-content (click)="presentModal(blog)">
+            <p> {{report.contenido}}</p>
+          </ion-card-content>
+        </ion-card>
+    </ion-list>
+  
+    <ion-list *ngSwitchCase="'Proceso'">
+      <ion-card  *ngIf="reportesResults?.length == 0" >
+          <ion-card-title style="text-align: center;">
+              <img src="./assets/imagenes/Logo_Notas.jpg" style=" width: 80%; height: 70%; padding-left: 25%; padding-bottom: 8%;"  />
+              En proceso de 
+              <p style="    font-size: 30px; color: black; font-weight: 350">
+                Actualización
+              </p>
+          </ion-card-title>
+      </ion-card>
+      <!--   -->
+      <ion-card *ngFor="let report of reportesResults" >
+          <ion-item >
+            <ion-avatar item-start>
+              <img src="https://inmonitor.red70s.net/app_medios/{{report.url}}" style="display: block;margin-left: auto;margin-right: auto;" >
+            </ion-avatar>
+            <table style="width: 100%">
+              <tr>
+                <td style="width: 70%;">
+                    <h2>{{report.Nombre_Us}} {{report.Ape_Pater_Us}}</h2>
+                </td>
+                <td style="text-align: right">
+                  <ion-note *ngIf="report.minutos <= 0" >
+                    {{report.segundos}}s ago
+                  </ion-note> 
+                  <ion-note *ngIf="report.hora <= 0 && report.minutos > 0" >
+                    {{report.minutos}}m ago
+                  </ion-note> 
+                  <ion-note  *ngIf="report.hora > 0 && report.dias <= 0">
+                    {{report.hora}}h ago
+                  </ion-note>    
+                  <ion-note  *ngIf="report.dias > 0 && report.semanas <= 0">
+                    {{report.dias}}d ago
+                  </ion-note>
+                  <ion-note  *ngIf="report.semanas > 0">
+                    {{report.semanas}}w ago
+                  </ion-note>                 
+                  <!-- <ion-note  >
+                    1w ago
+                  </ion-note> -->
+                </td>
+              </tr>
+              <tr>
+                <td> 
+                  <!-- <p>Septiembre 4, 2018</p> -->
+                  <p>{{meses[report.fecha.substring(5,7)-1]}} {{report.fecha.substring(8,10)}}, {{report.fecha.substring(0,4)}}</p> 
+                </td>
+                <!-- <td style="text-align: right"> -->
+                    <!-- <ion-badge color="secondary"  *ngIf="blog.Condicion=='1'">POSITIVO</ion-badge>
+                    <ion-badge color="danger" *ngIf="blog.Condicion=='2'">NEGATIVO</ion-badge>
+                    <ion-badge color="gris" *ngIf="blog.Condicion=='3'">NEUTRO</ion-badge> -->
+                    <!-- <ion-badge color="gris">NEUTRO</ion-badge> -->
+                <!-- </td> -->
+              </tr>
+            </table>
+          </ion-item>  
+          <!-- <img src="https://inmonitor.red70s.net/app_medios//assets/img/perfiles/avatar.png" style="height: 200px;" imageViewer fullResImage > -->
+          <img src="https://inmonitor.red70s.net/app_medios/{{report.ruta}}" style="height: 250px;" imageViewer fullResImage >
+          <ion-card-content (click)="presentModal(blog)">
+            <p> {{report.contenido}}</p>
+          </ion-card-content>
+        </ion-card>
+    </ion-list>
+    <ion-list *ngSwitchCase="'Atendido'">
+      <ion-card  *ngIf="reportesResults?.length == 0" >
+          <ion-card-title style="text-align: center;">
+              <img src="./assets/imagenes/Logo_Notas.jpg" style=" width: 80%; height: 70%; padding-left: 25%; padding-bottom: 8%;"  />
+              En proceso de 
+              <p style="    font-size: 30px; color: black; font-weight: 350">
+                Actualización
+              </p>
+          </ion-card-title>
+      </ion-card>
+      <!--   -->
+      <ion-card *ngFor="let report of reportesResults" >
+          <ion-item >
+            <ion-avatar item-start>
+              <img src="https://inmonitor.red70s.net/app_medios/{{report.url}}" style="display: block;margin-left: auto;margin-right: auto; background-size: auto;" >
+            </ion-avatar>
+            <table style="width: 100%">
+              <tr>
+                <td style="width: 70%;">
+                    <h2>{{report.Nombre_Us}} {{report.Ape_Pater_Us}}</h2>
+                </td>
+                <td style="text-align: right">
+                  <ion-note *ngIf="report.minutos <= 0" >
+                    {{report.segundos}}s ago
+                  </ion-note> 
+                  <ion-note *ngIf="report.hora <= 0 && report.minutos > 0" >
+                    {{report.minutos}}m ago
+                  </ion-note> 
+                  <ion-note  *ngIf="report.hora > 0 && report.dias <= 0">
+                    {{report.hora}}h ago
+                  </ion-note>    
+                  <ion-note  *ngIf="report.dias > 0 && report.semanas <= 0">
+                    {{report.dias}}d ago
+                  </ion-note>
+                  <ion-note  *ngIf="report.semanas > 0">
+                    {{report.semanas}}w ago
+                  </ion-note>                 
+                  <!-- <ion-note  >
+                    1w ago
+                  </ion-note> -->
+                </td>
+              </tr>
+              <tr>
+                <td> 
+                  <!-- <p>Septiembre 4, 2018</p> -->
+                  <p>{{meses[report.fecha.substring(5,7)-1]}} {{report.fecha.substring(8,10)}}, {{report.fecha.substring(0,4)}}</p> 
+                </td>
+                <!-- <td style="text-align: right"> -->
+                    <!-- <ion-badge color="secondary"  *ngIf="blog.Condicion=='1'">POSITIVO</ion-badge>
+                    <ion-badge color="danger" *ngIf="blog.Condicion=='2'">NEGATIVO</ion-badge>
+                    <ion-badge color="gris" *ngIf="blog.Condicion=='3'">NEUTRO</ion-badge> -->
+                    <!-- <ion-badge color="gris">NEUTRO</ion-badge> -->
+                <!-- </td> -->
+              </tr>
+            </table>
+          </ion-item>  
+          <!-- <img src="https://inmonitor.red70s.net/app_medios//assets/img/perfiles/avatar.png" style="height: 200px;" imageViewer fullResImage > -->
+          <img src="https://inmonitor.red70s.net/app_medios/{{report.ruta}}" style="height: 250px;  background-size: cover;" imageViewer fullResImage >
+          <ion-card-content (click)="presentModal(blog)">
+            <p> {{report.contenido}}</p>
+          </ion-card-content>
+        </ion-card>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer no-border>
+    <ion-toolbar>
+      <ion-buttons>
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 50%; text-align: center; background-color: rgb(179, 182, 182); border-radius: 20px;" (click)="dismiss()">
+              <button ion-button icon-left color="light">
+                  <!-- <ion-icon name="arrow-back"></ion-icon> -->
+                  Regresar
+              </button>
+            </td>
+            <td style="width: 50%; background-color: #9D2449; text-align: center; border-radius: 20px;">
+              <button ion-button icon-left color="light" (click)="agregar('Validado', id)" *ngIf="agreagarV">
+                <!-- <ion-icon name="ios-create"></ion-icon> -->
+                Reportar
+              </button>
+              <button ion-button icon-left color="light" (click)="agregar('Proceso', id)" *ngIf="agreagarP">
+                <!-- <ion-icon name="ios-create"></ion-icon> -->
+                Reportar
+              </button>
+              <button ion-button icon-left color="light" (click)="agregar('Atendido', id)" *ngIf="agreagarA">
+                <!-- <ion-icon name="ios-create"></ion-icon> -->
+                Reportar
+              </button>
+            </td>
+          </tr>
+        </table>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>

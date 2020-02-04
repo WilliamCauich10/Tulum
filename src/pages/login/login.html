@@ -1,0 +1,51 @@
+
+<ion-content    no-bounce>
+  <div class="fondo" style=" width: 100%; height: 50%; margin: 0 auto; padding: 0 auto; background-position: center">
+    <div class="div_Logo" style="height: 95%;">
+      <!-- imagen -->
+      <img class="LogoV" src="./assets/imagenes/Login_fondo.jpeg">      
+      <div class="imFondoVeloz" style="position: relative; ">
+        <img src="./assets/imagenes/Login_logo.png" >
+      </div>
+    </div>    
+    <div style="position: absolute; background: white; height: 50%; margin-top: 0px;padding-top: 10px;padding-bottom: 20%; border-top-right-radius: 7%; border-top-left-radius: 7%;">
+      <!-- form -->
+      <h1 style="font-weight: 100; padding-left: 10%;">Login</h1>
+      <form [formGroup]="login" (ngSubmit)="logForm()">
+        <!-- Username -->
+        <table style="width: 80%; margin-left: 10%;">
+          <!-- Usuario -->
+          <tr>
+            <td style=" width: 5%">
+                <ion-icon name="person" style="margin-top: 150%;"></ion-icon>
+            </td>
+            <td>
+                <ion-item>            
+                    <ion-label floating>Usuario</ion-label>
+                    <ion-input type="text" formControlName="username" ></ion-input>
+                </ion-item>
+            </td>
+          </tr>
+          <!-- Password -->
+          <tr>
+            <td style=" width: 5%">
+                <ion-icon name="lock" style="margin-top: 150%;"></ion-icon>
+            </td>
+            <td>
+                <ion-item>            
+                    <ion-label floating>Contraseña</ion-label>
+                    <ion-input type="password" formControlName="password" ></ion-input>
+                </ion-item>
+            </td>
+          </tr>
+        </table>
+        
+          <!-- Boton login -->
+        <div padding>
+          <button ion-button color="principalGob" block [disabled]="!login.valid"  >Ingresar</button>
+        </div>
+      </form>
+      <!-- <p class="formTitulo">Requiere de una cuenta para poder ingresar al sistema, contactenos</p> -->
+    </div>
+  </div>
+</ion-content>

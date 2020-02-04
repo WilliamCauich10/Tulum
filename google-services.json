@@ -1,0 +1,335 @@
+{
+  "project_info": {
+    "project_number": "255572746692",
+    "firebase_url": "https://inmonitor-ea7fd.firebaseio.com",
+    "project_id": "inmonitor-ea7fd",
+    "storage_bucket": "inmonitor-ea7fd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:694d925701e512a1",
+        "android_client_info": {
+          "package_name": "com.inmonitor.appaht"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:6a93d0d1179512d7",
+        "android_client_info": {
+          "package_name": "com.inmonitor.appbenitoj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:d34dbd9138d96171",
+        "android_client_info": {
+          "package_name": "com.inmonitor.appmovil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:0c59218adfabfe5a",
+        "android_client_info": {
+          "package_name": "com.inmonitor.appmovilgob"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:77aeae053026951b",
+        "android_client_info": {
+          "package_name": "com.inmonitor.apprecolector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:b165f0e94bf7512f",
+        "android_client_info": {
+          "package_name": "com.inmonitor.apptulum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:25ba700bc11088e1514491",
+        "android_client_info": {
+          "package_name": "com.inmonitor.prueba"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:ec12546aa780530b",
+        "android_client_info": {
+          "package_name": "com.inmonitor.sep"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:255572746692:android:3fbf5460d0584c13",
+        "android_client_info": {
+          "package_name": "com.inmonitor.turismotulum"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjhRejIKTxKwkL88Wp87toKcmMEr3dMQY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "255572746692-97sjv9spbnicq10n64n23jqn1bmpuhvc.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "255572746692-vakhioqtqluem6vataiplf3chh1vfek5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.inmonitor.turismotulum"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

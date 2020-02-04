@@ -1,0 +1,40 @@
+page-agenda {
+    .grid{
+        height: 60%;
+        .row{
+            height: 15%;
+        }
+    }
+    ion-calendar .calendar-row .select{
+        background: #5E192B !important;
+        border-radius: 100%;
+    }
+    ion-calendar .calendar-row .today{
+        border-radius: 100%;
+    }
+    .card-md{
+        box-shadow: none;
+    }
+    .segment-md-dark .segment-button.activated, .segment-md-dark .segment-button.segment-activated {
+        border-color: #F16D21;
+        
+      }
+      .segment-md-negro .segment-button.activated, .segment-md-negro .segment-button.segment-activated{
+        background: #5E192B; 
+        border-color: #5E192B;
+        color: white;
+      }
+      .segment-md-negro .segment-button {
+        background-color: #DE8901;
+        color: white;
+      }
+    // .content content-md .scroll-content {
+    //     padding-left: 0px;
+    //     padding-right: 0px;
+    // }
+    // .scroll-content {
+    //     padding: 0px;
+    // }
+    // ion-calendar .calendar-row .today
+    }
+    

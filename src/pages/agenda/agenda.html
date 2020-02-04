@@ -1,0 +1,86 @@
+<ion-header>
+  <ion-navbar color="light">
+      <button ion-button menuToggle (click)="openMenu()">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title color="btnSEP" style="color: #5E192B;">
+      Agenda
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content fullscreen #mycontent>  
+  <ion-scroll scrollX="true" style="width:100vw;height:50px" >
+      <ion-segment [(ngModel)]="SegmentosAgendas" color="negro" id="SegE" >  
+            <ion-segment-button id="{{rioType.Proyecto}}" *ngFor="let rioType of segmento" value="{{rioType.Proyecto}}" (ionSelect)="selectedSegment(rioType.Proyecto)" [ngStyle]="{'width': SegemtWidth}" style=" font-weight: 500;text-transform: capitalize; "  (click)="cambioAgenda(rioType.Id_Proyecto)" >
+              {{rioType.Proyecto}}
+            </ion-segment-button>                    
+      </ion-segment>
+    </ion-scroll>
+<ion-calendar #calendar lang="es" 
+        [events]="currentEvents" 
+        
+        (onDaySelect)="onChange($event)"
+        (onMonthSelect)="onMonthSelect($event)" 
+        (onTimeSelected)="onEventSelected($event)"
+        step="30"
+>    
+</ion-calendar>
+<div style="background-color: #5E192B; width: 100%; height: 45%;">
+    <table style=" width: 100%;">
+      <tr style=" font-family: Helvetica; color: #fdfafa;">
+          <td style=" width: 70%;">
+            <h1 style="font-size: 27px; margin-bottom: 0px;">{{DiaSemana}}</h1> 
+            <span >{{fecha}} </span> 
+          </td>
+          <td>
+            <!-- <button ion-button icon-left color="dark" outline (click)="modalCrearEvent()">
+              Nuevo
+            </button> -->
+          </td>
+      </tr>
+    </table>
+    <ion-scroll scrollY="true" style="width:100vw;height:70%" *ngIf="eventosDia">
+        <ion-card *ngFor="let eventos of eventosDia" style="background-color:#5E192B;" (click)="modalDetalleEvent(eventos[0].IdEvento)">
+            <table style=" width: 100%;" >
+                <div *ngIf="eventosDia?.length >0" >
+                  <tr>
+                      <td >
+                          <button ion-button color="verde" clear icon-only *ngIf="eventos[0].St==='En proceso'">
+                              <ion-icon name='radio-button-off' is-active="false" style="font-size: 1.3em;"></ion-icon>
+                          </button>
+                          <button ion-button color="primary" clear icon-only *ngIf="eventos[0].St=='Realizado'">
+                              <ion-icon name='radio-button-off' is-active="false" style="font-size: 1.3em;"></ion-icon>
+                          </button>
+                          <button ion-button color="naranja" clear icon-only *ngIf="eventos[0].St=='Cancelado'">
+                              <ion-icon name='radio-button-off' is-active="false" style="font-size: 1.3em;"></ion-icon>
+                          </button>
+                      </td>
+                      <td colspan="2">
+                        <p style=" font-family: Helvetica; color: #fdfafa; font-size: 13px;  margin-bottom: 0px;  font-weight: bold;">{{eventos[0].Titulo}}</p>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="width: 30px;"></td>
+                      <td style="width: 20px;"></td>
+                      <td>
+                        <span style=" font-family: Helvetica; color: #fdfafa; font-size: 11px;  margin-bottom: 0px;">
+                          {{eventos[0].Lugar}}
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td></td>
+                      <td>
+                        <span style=" font-family: Helvetica; color: #fdfafa; font-size: 11px;  margin-bottom: 0px;">
+                            {{eventos[0].HoraInicio}} - {{eventos[0].HoraFin}}
+                        </span>
+                      </td>
+                    </tr>
+                </div>
+              </table>
+        </ion-card>
+      
+    </ion-scroll>
+  </div>
+</ion-content>

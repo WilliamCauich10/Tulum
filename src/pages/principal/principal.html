@@ -1,0 +1,505 @@
+<ion-header >
+  <ion-toolbar color="light">
+      <button ion-button menuToggle (click)="openMenu()" color="btnSEP">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title color="btnSEP" style="color: #FACB00;">
+        Inmonitor
+      </ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="royal" (click)="notificaion()" id="notifi" style=" display: none; ">
+        </button>
+      </ion-buttons>
+  </ion-toolbar>
+  <!--  -->
+  <expandable-header [scrollArea]="mycontent" headerHeight="215"  *ngIf="topmostrar" >
+    <!-- imagen noticia del dia -->
+    <div class="Top5Div" style="width: 100%; height: 210px;">
+      <ion-slides pager style="height: 250px;">      
+        <ion-slide *ngIf="top5?.length === 0" >
+            <ion-card style="margin-left: 0px;" >
+              <img src="./assets/imagenes/Logo_Notas.jpg" style=" width: 51%;margin-bottom: 0px;position: absolute;bottom: 0px;top: 24%;left: 24%;" imageViewer />
+              <h2 style="color: black; line-height: 0px; " class="tituloNull">
+                En proceso de 
+                  <p style="    font-size: 30px; color: black; font-weight: 350">
+                    Actualización
+                  </p>
+              </h2>
+            </ion-card>
+        </ion-slide>
+          <ion-slide *ngFor="let top of top5">
+            <ion-card style=" background-color: black;">
+              <img src="https://inmonitor.red70s.net/app_medios/{{top.url}}" style=" width: 100%; height: 221px;  background-size: cover;" imageViewer />
+              <!-- <img src="http://localhost/BajaCalifornia/{{top.url}}" style=" width: 100%; height: 221px;  background-size: cover;" imageViewer /> -->
+              <h2 style="color: white; line-height: 22px; " *ngIf="top.Titulo.length <= 65" >{{top.Titulo}}</h2>
+              <h2 style="color: white; line-height: 22px; " *ngIf="top.Titulo.length > 65" >{{top.Titulo.substring(0,55)}}...</h2>
+              </ion-card>
+          </ion-slide>      
+      </ion-slides>
+    </div>  
+    <!--  -->    
+  </expandable-header>
+  <!-- Segment -->
+  <div style=" background-color: white;">
+      <table style="width: 100%; height: 100%;" >
+        <tr>
+          <td style="width: 20%;" [style.backgroundColor]="light">
+              <ion-segment [(ngModel)]="pet" color="dark" style="     width: 73px;" >
+                <ion-segment-button style=" height: 100%; line-height: 20px; width: 73px;"  >
+                    <br>
+                    {{FechaMostrar}}  
+                    <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.Actual" (ionChange)='CambioFecha(event.Actual)' class="fecha1"></ion-datetime>
+                  </ion-segment-button>
+                </ion-segment>
+          </td>
+          <td [style.backgroundColor]="light">
+              <ion-segment [(ngModel)]="pet" color="dark"  style="border-top-left-radius: 10%; height: 50px;" >
+                  <ion-segment-button value="Noticias" (click)="bajar('subir')" style=" height: 100%; width: 30%; line-height: 1px; display: inline-block !important" >
+                      <!-- <ion-icon ios="ios-home-outline" md="md-home"></ion-icon> -->
+                      <ion-icon name="home"></ion-icon>
+                      <br>
+                    Noticias
+                  </ion-segment-button>
+                  <ion-segment-button value="Grafica" (click)="bajar('bajar')" style=" height: 100%; width: 30%; line-height: 1px !important; display: inline-block !important"  >
+                      <ion-icon name="stats"></ion-icon>
+                      <!-- <ion-icon ios="appname-grafica" md="appname-grafica"></ion-icon> -->
+                      <br>
+                    Gráfica
+                  </ion-segment-button>
+                  <ion-segment-button value="Busqueda2" (click)="bajar('bajar')" style=" height: 100%; width: 30%; line-height: 1px !important; display: inline-block !important" >
+                      <!-- <ion-icon ios="ios-search" md="md-search"></ion-icon> -->
+                      <ion-icon name="search"></ion-icon>
+                      <br>
+                    Busqueda 
+                  </ion-segment-button>
+                </ion-segment>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <!-- notificación actualizar -->
+      <button ion-button full small icon-start  *ngIf="notifi" (click)="actualizar($event)" ><ion-icon name="refresh" > </ion-icon> Nuevos analisis</button> 
+</ion-header>
+
+<!-- content -->
+<ion-content   class="fondo_Noti" fullscreen #mycontent  > 
+<!--  -->
+  <div [ngSwitch]="pet">
+      <ion-list *ngSwitchCase="'Noticias'">
+        <!-- <ion-scroll scrollX="true" style="width:100vw;height:50px" *ngIf="SegmentoEstadosDisplay">
+              <ion-segment [(ngModel)]="SegmentoEstados" color="negro" id="SegE" >  
+                    <ion-segment-button id="{{rioType.nom_geo}}" *ngFor="let rioType of segmento" value="{{rioType.nom_geo}}" (ionSelect)="selectedSegment(rioType.nom_geo)" [ngStyle]="{'width': SegemtWidth}" style=" font-weight: 500;text-transform: capitalize; "   >
+                      {{rioType.nom_geo}}
+                    </ion-segment-button>                    
+              </ion-segment>
+            </ion-scroll> -->
+        <!--  -->
+        <!-- <div [ngSwitch]="SegmentoEstados"  > -->
+          <!-- <div *ngFor="let rioType of segmento;"> -->
+            <!-- <ion-list *ngSwitchCase= rioType.nom_geo > -->
+                <div *ngFor="let noticia of users">
+                <!-- Noticia -->
+                  <!-- <ion-card *ngIf="noticia.nom_geo == rioType.nom_geo" > -->
+                      <table >
+                          <tr>
+                            <td rowspan="2" style=" width: 42%; height:140px ">
+                                <img src="https://inmonitor.red70s.net/app_medios/{{noticia.url}}"  style="height:100%; border-radius: 5%" imageViewer fullResImage >
+                                <!-- <img src="http://localhost/BajaCalifornia/{{noticia.url}}"  style="height:100%; border-radius: 5%" imageViewer fullResImage > -->
+                            </td>
+                            <td colspan="3" style=" height: 80%; width: 59.5%; padding-left: 10px;" (click)="presentModal(noticia)">
+                                <label *ngIf="noticia.tit_analisis.length<=65 ">{{noticia.tit_analisis }}</label>
+                                <label *ngIf="noticia.tit_analisis.length > 65 ">{{noticia.tit_analisis.substring(0,55)}}...</label>
+                            </td>
+                            <td rowspan="2" style="background: #A02329;" *ngIf="noticia.id_escenario_tema_analisis=='1'||noticia.id_escenario_tema_analisis=='2'||noticia.id_escenario_tema_analisis=='3'">
+                              </td>
+                              <td rowspan="2" style="background: #00B050;" *ngIf="noticia.id_escenario_tema_analisis=='5'">
+                              </td>
+                              <td rowspan="2" style="background: #D2CDCC;" *ngIf="noticia.id_escenario_tema_analisis=='4'"></td>
+                          </tr>
+                        <tr>
+                          <td style="text-align: left; ">                   
+                            <button ion-button clear small color="turismoAzul1" icon-start (click)="presentModal(noticia)" style="padding-right: 0px; text-transform: lowercase">
+                              <ion-icon name='ios-attach-outline'></ion-icon>
+                              {{noticia.PDF}}
+                              <span style="padding-left: 5px; font-size: 12px;"> </span>
+                            </button>
+                          </td>
+                          <td style="text-align: center; " >
+                            <button ion-button clear small color="turismoAzul1" icon-start (click)="presentModalComent(noticia.id_analisis)" style="padding-right: 0px; text-transform: lowercase">
+                              <ion-icon name='appname-chat' style="height: 1.6rem;"></ion-icon>
+                                  {{noticia.Comentarios}}      
+                                  <span style="padding-left: 5px; font-size: 12px;"> </span>        
+                              </button>
+                          </td>
+                          <td style="text-align: center">
+                            <button ion-button clear small color="gris" icon-start (click)="presentModalComentario(noticia.id_analisis,noticia.Status)" style="padding-right: 0px;"  *ngIf="noticia.Status==null">
+                              <ion-icon name='ios-radio-button-on' style=" font-size: 25px;"></ion-icon>
+                            </button>
+                            <button ion-button clear small color="{{noticia.Color}}" icon-start (click)="presentModalComentario(noticia.id_analisis,noticia.Status)" style="padding-right: 0px;" *ngIf="noticia.Status!=null">
+                              <ion-icon name='ios-radio-button-on' style=" font-size: 25px;"></ion-icon>
+                            </button>
+                          </td>
+                        </tr>
+                      </table>
+                  <!-- </ion-card> -->
+                </div>
+            </ion-list>
+          <!-- </div> -->
+        <!-- </div> -->
+      <!-- </ion-scroll> -->
+      <!-- </ion-list> -->
+  <!-- Grafica -->
+      <ion-list *ngSwitchCase="'Grafica'" style="background: white; height: 100%;" class="Grafica" >
+          <ion-card  *ngIf="users?.length == 0" >
+              <ion-card-title style="text-align: center;">
+                  <img src="./assets/imagenes/Logo_Notas.jpg" style=" width: 80%; height: 70%; padding-left: 25%"  />
+                  <h2 style="color: #06A4CA; line-height: 0px; padding-top: 8%;" class="tituloNull">
+                      En proceso de 
+                        <p style="    font-size: 30px; color: #06A4CA; font-weight: 350">
+                          Actualización
+                        </p>
+                    </h2>
+              </ion-card-title>
+          </ion-card>
+
+        <table style=" width: 100%; height: 70px; text-align: center; color: white" *ngIf="users?.length !== 0">
+          <tr>
+            <td style="width: 50%; background: #06A4CA;">
+              <h1 style="font-size: 40px;line-height: 20px;">
+                {{GeoTotal}}
+              </h1>
+              Eventos
+            </td>
+            <td style=" background: #0DBBBA;" *ngIf="artTotal !== 0" >
+              <h1 style="font-size: 40px;line-height: 20px;">
+                {{artTotal}}
+              </h1>
+              Articulos
+            </td>
+          </tr>
+        </table>
+        <h1 *ngIf="users?.length !== 0" class="GraficaTitulos"> <ion-icon name='grafica-tematico'></ion-icon> Escenario Temático</h1>
+        <google-chart [data]="BarChart" *ngIf="users?.length !== 0"></google-chart>
+        <h1 *ngIf="users?.length !== 0" class="GraficaTitulos"><ion-icon name='grafica-geografico'></ion-icon> Ámbito Geográfico</h1>
+        <table style="width: 100%;font-weight: 300; color:black; font-size: 18px; line-height: 30px; border: white 15px solid;" BORDER =1 *ngIf="users?.length !== 0" class="Avances">
+          <tr style="background: #06A4CA; color: white;">
+            <th style="width: 70%">Ámbito</th>
+            <th>Sucesos</th>
+          </tr>
+          <tr  *ngFor="let geo of TablaGeo" >
+            <td>
+              {{geo.nom_geo}}
+            </td>
+            <td style="text-align: center">
+              {{geo.total}}
+            </td>
+          </tr>
+          <tr style="background: #06A4CA; color: white; text-align: center">
+            <th>Total</th>
+            <th>{{GeoTotal}}</th>
+          </tr>
+        </table>
+        <!-- avances  -->
+        <h1 *ngIf="users?.length !== 0" class="GraficaTitulos"><ion-icon name='grafica-atencion'></ion-icon> Avances de Atención</h1>
+        <google-chart [data]="pieChartData"></google-chart>
+        <table style="width: 100%;font-weight: 300;font-size: 18px; color: black; line-height: 30px;border: white 15px solid;" BORDER =1 *ngIf="users?.length !== 0" class="Avances">
+          <tr style="background: #06A4CA; color: white; text-align: center;">
+            <th style="width: 70%">Ámbito</th>
+            <th>Sucesos</th>
+          </tr>
+          <tr>
+            <td>Sin Validar</td>
+            <td style="text-align: center;">{{noValid}}</td>
+          </tr>
+          <tr  *ngFor="let stat of StatusTabla" >
+            <td>
+              {{stat.nombre}}
+            </td>
+            <td style="text-align: center">
+              {{stat.total}}
+            </td>  
+          </tr>
+            <!--  -->
+          <tr   *ngIf="datos3[1][1]=== 0 && StatusTabla?.length !== 0" >
+            <td>
+              Validado
+            </td>
+            <td style="text-align: center">
+              0
+            </td>
+          </tr>
+          <tr *ngIf="datos3[2][1] === 0 && StatusTabla?.length !== 0"  >
+            <td >
+              En proceso
+            </td>
+            <td style="text-align: center" >
+              0
+            </td>
+          </tr>
+          <tr *ngIf="datos3[3][1]=== 0 && StatusTabla?.length !== 0"  >
+            <td >
+              Atendido
+            </td>
+            <td style="text-align: center">
+              0
+            </td>
+          </tr>
+            <!--  -->
+          <tr  *ngIf="StatusTabla?.length === 0" >
+            <td>
+              Validado
+            </td>
+            <td style="text-align: center">
+              0
+            </td>
+          </tr>
+          <tr  *ngIf="StatusTabla?.length === 0" >
+            <td>
+              En proceso
+            </td>
+            <td style="text-align: center">
+              0
+            </td>
+          </tr>
+          <tr  *ngIf="StatusTabla?.length === 0" >
+            <td>
+              Atendido
+            </td>
+            <td style="text-align: center">
+              0
+            </td>
+          </tr>
+          <tr style="background: #06A4CA; color: white; text-align: center;">
+            <th>Total</th>
+            <th>{{GeoTotal}}</th>
+          </tr>
+        </table>           
+        <!--  -->
+      </ion-list>
+      <!-- Busqueda  -->
+      <ion-list *ngSwitchCase="'Busqueda2'" style="background: white; height: 100%;" >
+          <h4 style="text-align: center">Critetios de Búsqueda  <button ion-button color="secondary" clear icon-only>
+            <ion-icon ios="ios-search" md="md-search"></ion-icon>
+          </button></h4>
+          <ion-item>
+            <ion-label>Periodo</ion-label>
+            <ion-select [(ngModel)]="BusqTipo" interface="popover" placeholder="Seleccionar">
+              <ion-option value="Exacta" (ionSelect)="tipoBusqueda('Exacta',eventBusqeda.time)">Exacto</ion-option>
+              <ion-option value="Rango" (ionSelect)="tipoBusqueda('Rango',eventBusqeda.time)">Intervalo de Fechas</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item *ngIf="Exacta">
+            <ion-label>Fecha</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="eventBusqeda.time" (ionChange)="fechaBusqueda(eventBusqeda.time)"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="Rango">
+            <ion-label>Fecha de inicio</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="eventBusqeda.timeStarts"  (ionChange)="fechaBusqueda2(eventBusqeda.timeStarts)"></ion-datetime>
+          </ion-item>
+          <ion-item  *ngIf="Rango">
+            <ion-label>Fecha de fin</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="eventBusqeda.timeEnds" (ionChange)="fechaBusqueda3(eventBusqeda.timeEnds)"></ion-datetime>
+          </ion-item>
+         <!--  <ion-item>
+            <ion-label>Tipo</ion-label>
+            <ion-input type="text" style="width: 200px" placeholder="Palabras o Temas"></ion-input>
+          </ion-item> -->
+          <ion-item *ngIf="temasBusquedaBool">
+            <ion-label>Tipo</ion-label>
+              <ion-select [(ngModel)]="TipoPT" interface="popover" placeholder="Seleccionar">
+                <ion-option value="Palabras" (ionSelect)="palabrasBusqueda('Palabras')">Palabras</ion-option>
+                <ion-option value="Temas" (ionSelect)="palabrasBusqueda('Temas')">Temas</ion-option>
+              </ion-select>
+          </ion-item>
+            <form [formGroup]="fomrbusqueda" (ngSubmit)="logForm()" >
+                <ion-item *ngIf="boolPalabra">
+                  <ion-label>Palabras</ion-label>
+                  <ion-input type="text" formControlName="Palabras" style="width: 200px;" placeholder="Escriba su Palabra" ></ion-input>
+                </ion-item>
+              </form>
+              <ion-item *ngIf="boolTema">
+                  <ion-label>Temas</ion-label>
+                  <ion-select [(ngModel)]="TemasBusqueda" interface="popover" placeholder="Seleccionar" >
+                    <div *ngFor="let filtro of FiltroTemas">
+
+                      <ion-option value="{{filtro.id_tema_analisis_desc}}" (ionSelect)="TemasPalabras(filtro.id_tema_analisis_desc)" *ngIf="filtro.id_Geo !== null "> {{filtro.id_tema_analisis_desc}} </ion-option>
+                    </div>
+                  </ion-select>
+                </ion-item>
+             <!--  -->
+              <p>
+                <button ion-button icon-start (click)="limpiar()"  class="Btnbusqueda" style="margin-left: 30px;background-color: rgb(179, 182, 182); border-radius: 20px;">Limpiar</button>
+                <button ion-button icon-start [disabled]="!fomrbusqueda.valid && TemasBusqueda==''" (click)="logForm()" color="secondary" class="Btnbusqueda" style="background-color: #6BD13D; border-radius: 20px;">Buscar</button>
+              </p>
+           <!-- Noticia'  -->
+             <div class="" *ngIf="ResultdoBusquda?.length === 0 && limpiarV" >
+                <ion-card  style="height: 200px;" >
+                     <ion-card-title style="color: #06A4CA;">
+                       No se encontraron datos
+                     </ion-card-title>
+                </ion-card>
+               </div>
+               <table style=" width: 100%; height: 70px; text-align: center; color: white" *ngIf="ResultdoBusquda?.length !== 0">
+                <tr>
+                  <td style="width: 50%; background: #06A4CA;">
+                    <h1 style="font-size: 40px;line-height: 20px;">
+                      {{GeoTotalBusq}}
+                    </h1>
+                    Eventos
+                  </td>
+                  <td style=" background: #0DBBBA" >
+                    <h1 style="font-size: 40px;line-height: 20px;">
+                      {{artTotalbusqueda}}      
+                    </h1>
+                    Articulos
+                  </td>
+                </tr>
+              </table>
+                 <!--  -->
+             <!-- Noticia -->
+             <ion-card *ngFor="let noticia of ResultdoBusquda">
+                <table>
+                  <tr>
+                    <td rowspan="2" style=" width: 42%; height:140px ">
+                        <img src="https://inmonitor.red70s.net/app_medios/{{noticia.url}}"  style="height:100%; border-radius: 5%" imageViewer fullResImage >
+                        <!-- <img src="http://localhost/BajaCalifornia/{{noticia.url}}"  style="height:100%; border-radius: 5%" imageViewer fullResImage > -->
+                    </td>
+                    <td colspan="3" style=" height: 80%; width: 59.5%; padding-left: 10px;" (click)="presentModal(noticia)">
+                      <!-- {{noticia.tit_analisis}} -->
+                      <label *ngIf="noticia.tit_analisis.length<=65">{{noticia.tit_analisis }}</label>
+                      <label *ngIf="noticia.tit_analisis.length > 65">{{noticia.tit_analisis.substring(0,55)}}...</label>
+                    </td>
+                    <td rowspan="2" style="background: #A02329;" *ngIf="noticia.id_escenario_tema_analisis=='1'||noticia.id_escenario_tema_analisis=='2'||noticia.id_escenario_tema_analisis=='3'">
+                      </td>
+                      <td rowspan="2" style="background: #00B050;" *ngIf="noticia.id_escenario_tema_analisis=='5'">
+                      </td>
+                      <td rowspan="2" style="background: #D2CDCC;" *ngIf="noticia.id_escenario_tema_analisis=='4'"></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left; ">
+                      <button ion-button clear small color="turismoAzul1" icon-start (click)="presentModal(noticia)" style="padding-right: 0px; text-transform: lowercase">
+                        <ion-icon name='ios-attach-outline'></ion-icon>
+                        {{noticia.pdf}} 
+                      </button>
+                    </td>
+                    <td style="text-align: center; " >
+                      <button ion-button clear small color="turismoAzul1" icon-start (click)="presentModalComent(noticia.id_analisis)" style="padding-right: 0px; text-transform: lowercase">
+                        <ion-icon name='appname-chat' style="height: 1.6rem;"></ion-icon>
+                            {{noticia.Cometario}}              
+                      </button>
+                  </td>
+                  <td style="text-align: center">
+                    <button ion-button clear small color="gris" icon-start (click)="presentModalComentario(noticia.id_analisis,noticia.Status)" style="padding-right: 0px;"  *ngIf="noticia.Status==null">
+                      <ion-icon name='ios-radio-button-on' style=" font-size: 25px;"></ion-icon>
+                    </button>
+                    <button ion-button clear small color="{{noticia.Color}}" icon-start (click)="presentModalComentario(noticia.id_analisis,noticia.Status)" style="padding-right: 0px;" *ngIf="noticia.Status!=null">
+                      <ion-icon name='ios-radio-button-on' style=" font-size: 25px;"></ion-icon>
+                    </button>
+                  </td>
+                  </tr>
+                </table>
+              </ion-card>        
+              <h1  style="text-align: center;" *ngIf="GraficaProviderBusq?.length !== 0"> Graficas</h1>
+              <!-- Grafica 1 -->
+              <h1 style="text-align: center;" *ngIf="GraficaProviderBusq?.length !== 0" class="GraficaTitulos"> <ion-icon name='grafica-tematico'></ion-icon> Escenario Temático</h1>
+              <google-chart [data]="Barchart2" *ngIf="GraficaProviderBusq?.length !== 0"></google-chart>
+              <!-- Grafica 2 -->
+              <h1 style="text-align: center;" *ngIf="GraficaProviderBusq?.length !== 0" class="GraficaTitulos"><ion-icon name='grafica-geografico'></ion-icon> Ámbito Geográfico</h1>
+                <table style="width: 100%;font-weight: 300; color: black; font-size: 18px; line-height: 30px; border: white 15px solid;" BORDER =1 *ngIf="GraficaProviderBusq?.length !== 0" class="Avances">
+                  <tr style="background: #06A4CA; color: white; text-align: center;">
+                    <th style="width: 70%">Ámbito</th>
+                    <th>SUCESOS</th>
+                  </tr>
+                  <tr  *ngFor="let geo of TablaGeoBus">
+                    <td>
+                      {{geo.nom_geo}}
+                    </td>
+                    <td style="text-align: center">
+                      {{geo.total}}
+                    </td>
+                  </tr>
+                  <tr style="background: #06A4CA; color: white; text-align: center">
+                    <th>Total</th>
+                    <th>{{GeoTotalBusq}}</th>
+                  </tr>
+                </table>
+            <!-- Grafica 3 -->
+            <h1  style="text-align: center;" *ngIf="GraficaProviderBusq?.length !== 0" class="GraficaTitulos"><ion-icon name='grafica-atencion'></ion-icon> Avances de Atención</h1>
+              <google-chart [data]="pieChartData2" *ngIf="GraficaProviderBusq?.length !== 0"></google-chart>
+              <table style="width: 100%;font-weight: 300;font-size: 18px; color: black; line-height: 30px;border: white 15px solid;" BORDER =1 *ngIf="GraficaProviderBusq?.length !== 0" class="Avances">
+                <tr style="background: #06A4CA; color: white; text-align: center;">
+                  <th style="width: 70%">Status</th>
+                  <th>total</th>
+                </tr>
+                <tr>
+                  <td>Sin Validar</td>
+                  <td style="text-align: center;">{{noValidBusq}}</td>
+                </tr>
+                <tr  *ngFor="let stat of StatusTablaBusq" >
+                  <td>
+                    {{stat.nombre}}
+                  </td>
+                  <td style="text-align: center">
+                    {{stat.total}}
+                  </td>
+                </tr>
+                <!--  -->
+                <tr   *ngIf="datos3Bus[1][1]=== 0 && StatusTablaBusq?.length !== 0" >
+                  <td>
+                    Validado
+                  </td>
+                  <td style="text-align: center">
+                    0
+                  </td>
+                </tr>
+                <tr *ngIf="datos3Bus[2][1]=== 0 && StatusTablaBusq?.length !== 0"  >
+                  <td >
+                    En proceso
+                  </td>
+                  <td style="text-align: center" >
+                    0
+                  </td>
+                </tr>
+                <tr *ngIf="datos3Bus[3][1]=== 0 && StatusTablaBusq?.length !== 0"  >
+                  <td >
+                    Atendido
+                  </td>
+                  <td style="text-align: center">
+                    0
+                  </td>
+                </tr>
+               <!--  -->
+                <tr  *ngIf="StatusTablaBusq.length === 0" >
+                  <td>
+                    Validado
+                  </td>
+                  <td style="text-align: center">
+                    0
+                  </td>
+                </tr>
+                <tr  *ngIf="StatusTablaBusq.length === 0" >
+                  <td>
+                    En proceso
+                  </td>
+                  <td style="text-align: center">
+                    0
+                  </td>
+                </tr>
+                <tr  *ngIf="StatusTablaBusq.length === 0" >
+                  <td>
+                    Atendido
+                  </td>
+                  <td style="text-align: center">
+                    0
+                  </td>
+                </tr>
+                <tr style="background: #06A4CA; color: white; text-align: center;">
+                  <th>Total</th>
+                  <th>{{totalAvancesBusq}}</th>
+                </tr>
+              </table>
+      </ion-list>
+    </div>
+  <!--  -->
+</ion-content>
+

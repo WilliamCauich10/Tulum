@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar color="light">
+      <button ion-button menuToggle (click)="openMenu()">
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>perfil</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+ <ion-content padding>
+   <!-- img cargada -->
+ <!--<img src="{{pathForImage(lastImage)}}" style="width: 100%;height: 300px;" [hidden]="lastImage === null" imageViewer> -->
+  <img src={{base64img}} style="width: 100%;height: 300px;" *ngIf="lastImage"  imageViewer>
+  <!-- img actual -->
+  <img src="{{foto}}" style="width: 100%;height: 300px;" [hidden]="lastImage !== null || imagenprueba" imageViewer>
+  <!-- <button ion-button icon-left (click)="Limpiar_cache()">
+      <ion-icon name="reverse-camera"></ion-icon>Imagen
+    </button> -->
+    
+</ion-content>
+ <!-- Pie de pagina -->
+<ion-footer>
+  <!-- menu -->
+  <ion-toolbar>
+    <ion-buttons>
+      <button ion-button icon-left (click)="presentActionSheet()">
+        <ion-icon name="reverse-camera"></ion-icon>Imagen
+      </button>
+      <button ion-button icon-left (click)="uploadImage()" [disabled]="lastImage === null">
+        <ion-icon name="cloud-upload"></ion-icon>Actualizar
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

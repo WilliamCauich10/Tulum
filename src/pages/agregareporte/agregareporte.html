@@ -1,0 +1,77 @@
+<!--
+  Generated template for the AgregareportePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agregar Reporte</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <div style="width: 100%; height: 220px; " (click)="presentActionSheet()" >
+       <div style="margin-left: 20px;margin-right: 20px;margin-bottom: 20px; "[hidden]="lastImage !== null">
+          <!-- asd -->
+            <img src="./assets/imagenes/Logo_Notas.jpg" style="width: 80%; height: 70%; padding-left: 25%;padding-top: 8%; margin-bottom: 12px;" [hidden]="lastImage !== null || imagenprueba || base64img">
+            <br>
+            <label style="text-align: center; padding-top: 10px;">
+              <p style="font-size: 18px;line-height: 0; margin-top: 0px;  padding-top: 3%;">
+                Presione para agregar 
+              </p>
+                <p style="line-height: 0; font-size: 30px; color: black; font-weight: 350">
+                  Imagen
+                </p>
+            </label>
+        </div>
+        <img src={{base64img}} style="width: 100%; height: 200px;" [hidden]="lastImage === null">
+        <!-- <img src="{{pathForImage(lastImage)}}" style="width: 100%; height: 200px;" [hidden]="lastImage === null"> -->
+        <!-- <img src="{{pathForImage(lastImage)}}" style="width: 100%" [hidden]="lastImage === null"> -->
+        <!-- <h3>Cargar Imagen</h3> -->
+      </div>
+    <form [formGroup]="reporte" (ngSubmit)="logForm()">
+        <ion-card style="height: 150px;">
+          <ion-item>
+            <ion-label floating color="dark" style="text-align: center;">Reporte</ion-label>
+            <ion-textarea rows="6" formControlName="Contenido" ></ion-textarea>
+          </ion-item>
+        </ion-card>
+        <!-- <button ion-button clear small color="primary" icon-start [disabled]="!reporte.valid">
+        <ion-icon name="send"></ion-icon>
+        </button> -->
+    </form>
+</ion-content>
+<ion-footer no-border>
+    <ion-toolbar>
+      <ion-buttons>
+        <!-- <button ion-button icon-left color="danger" (click)="dismiss()">
+          Cancelar
+        </button>
+        <button ion-button icon-right color="secondary" [disabled]="!reporte.valid" (click)="logForm()">
+          <ion-icon name="md-done-all"></ion-icon>Guardar
+        </button> -->
+        <table style="width: 100%">
+          <tr>
+            <td style="width: 50%; text-align: center;  background-color: rgb(179, 182, 182); border-radius: 20px;"  (click)="dismiss()">
+              <button ion-button icon-left color="light" >
+                  Cancelar
+              </button>
+            </td>
+            <td style="width: 50%; background-color: #96C847; text-align: center; border-radius: 20px;">
+              <!-- <button ion-button icon-left color="light" [disabled]="!reporte.valid" (click)="logForm()">
+                  <ion-icon name="md-paper-plane"></ion-icon>
+                  Guardar
+              </button> -->
+              <button ion-button icon-left color="light" [disabled]="!reporte.valid" (click)="logForm()">
+                  Guardar
+              </button>
+            </td>
+          </tr>
+        </table>
+        </ion-buttons>
+    </ion-toolbar>
+  </ion-footer>

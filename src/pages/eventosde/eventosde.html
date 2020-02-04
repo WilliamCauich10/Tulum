@@ -1,0 +1,97 @@
+<!--
+  Generated template for the EventosdePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons start>
+        <button ion-button (click)="dismiss()">
+          <!-- <span ion-text color="primary" showWhen="ios">Cancel</span>
+        <ion-icon name="md-close" showWhen="android,windows"></ion-icon> -->
+            <ion-icon name="arrow-back"></ion-icon>
+        </button>
+      </ion-buttons>
+    <!-- <ion-title>Detalle</ion-title> -->
+    <!-- <img src="./assets/imgs/Imagen 2.png" style="padding-left: 35%;" > -->
+    <ion-title color="btnSEP" style="color: #5E192B;">
+      Agenda
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen #mycontent>
+  <ion-card *ngFor="let eventos of EventosAgenda" style=" margin-top: 0px; margin-left: 0px; margin-right: 0px; width: 100%">
+    <div style="background-color: #5E192B; width: 100%; height: 50%;  font-family: Helvetica; color: #fdfafa; padding-left: 35px; ">
+      <h1 style="font-size: 18px; margin-bottom: 0px; line-height: 1.3;  padding-top: 13px; color: white;">
+        {{eventos.Actividad}}
+      </h1>
+      <span style="font-size: 12px;">{{eventos.Fecha}} </span> 
+      <br>
+      <span style="font-size: 12px;">{{eventos.horaIni}} - {{eventos.horaFin}}</span> 
+      <br>
+      <br>
+    </div>
+    <div style="background-color: white; width: 100%; padding-left: 35px; ">
+      <h1 style="font-family: Helvetica; color: black; font-size: 14px; margin-bottom: 5px; padding-top: 13px;">
+        {{eventos.Direccion}}
+      </h1>
+      <span style="font-family: Helvetica; color: black; font-size: 12px; " >{{eventos.Lugar}} </span> 
+      <br>
+      <span style="font-family: Helvetica; color: black; font-size: 12px; " >{{eventos.nom_geo}},</span> 
+      <span style="font-family: Helvetica; color: black; font-size: 12px; " >{{eventos.NOM_LOC}} </span> 
+      <br>
+      <table style="width: 100%">
+        <tr>
+          <td style="width: 18%;">
+            <button ion-item  *ngIf="!btnCamara">
+              </button>
+              <button ion-item  *ngIf="btnCamara">
+                <ion-icon name='camera'></ion-icon>
+              </button>
+          </td>
+          <td>
+              <!-- style="position: fixed;  margin-left: 46%;margin-top: -8%; " [disabled]="true" -->
+              <ion-item>
+                <ion-select [(ngModel)]="BusqTipo" interface="popover" placeholder="Seleccionar" style="margin-left: 46%;">
+                  <!-- <div *ngIf="BusqTipo=='En proceso'">
+                      <ion-option value="En proceso" (ionSelect)="Cambio('En proceso')" >En proceso</ion-option>
+                      <ion-option value="Realizado" (ionSelect)="Cambio('Realizado')">Realizado</ion-option>
+                      <ion-option value="Cancelado" (ionSelect)="Cambio('Cancelado')">Cancelado</ion-option>
+                  </div>
+                  <div *ngIf="BusqTipo=='Realizado'">
+                      <ion-option value="En proceso" (ionSelect)="Cambio('En proceso')" [disabled]="true" >En proceso</ion-option>
+                      <ion-option value="Realizado" (ionSelect)="Cambio('Realizado')">Realizado</ion-option>
+                      <ion-option value="Cancelado" (ionSelect)="Cambio('Cancelado')">Cancelado</ion-option>
+                  </div>
+                  <div *ngIf="BusqTipo=='Cancelado'">
+                      <ion-option value="En proceso" (ionSelect)="Cambio('En proceso')" [disabled]="true" >En proceso</ion-option>
+                      <ion-option value="Realizado" (ionSelect)="Cambio('Realizado')" >Realizado</ion-option>
+                      <ion-option value="Cancelado" (ionSelect)="Cambio('Cancelado')">Cancelado</ion-option>
+                  </div> -->
+                  <ion-option value="En proceso" (ionSelect)="Cambio('En proceso')"  [disabled]="true">En proceso</ion-option>
+                  <ion-option value="Realizado" (ionSelect)="Cambio('Realizado')"  [disabled]="true">Realizado</ion-option>
+                  <ion-option value="Cancelado" (ionSelect)="Cambio('Cancelado')"  [disabled]="true">Cancelado</ion-option>
+                </ion-select>
+              </ion-item>
+          </td>
+        </tr>        
+      </table>      
+    </div>  
+  </ion-card>
+<!--  -->
+<div class="Top5Div" style="width: 100%; height: 260px;" *ngIf="GaleriaAgenda?.length > 0">
+  <ion-slides pager style="height: 226px;">      
+    <ion-slide *ngFor="let galeria of GaleriaAgenda">
+      <ion-card style=" background-color: black;">
+          <img src="http://inmonitor.red70s.net/agenda_sinaloa{{galeria.Ruta}}" style=" width: 100%; height: 221px;  background-size: cover;" imageViewer (press)="Borrar(galeria.Id)" />
+          <!-- <img src="http://192.168.10.204/agendajp{{galeria.Ruta}}" style=" width: 100%; height: 221px;  background-size: cover;" imageViewer (press)="Borrar(galeria.Id)"/> -->
+        </ion-card>
+      </ion-slide>      
+    </ion-slides>
+  </div>  
+  <h2>Observaciones</h2>
+  <p *ngFor="let eventos of EventosAgenda"> {{eventos.Observaciones}} </p>
+  <div #map id="map"></div>  
+</ion-content>

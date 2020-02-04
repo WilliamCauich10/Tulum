@@ -1,0 +1,69 @@
+<ion-menu [content]="fondo_Noti">
+    <ion-content  >
+        <ion-header>
+          <ion-toolbar style="height: 100%">
+            <div style="height: 100%" class="perfil">
+                <img src="{{foto}}" style="width:100px; height:100px; border-radius:100px; margin-left: 3%; margin-top: 10%; border:5px solid white;" (click)="openPage('PerfilPage')">
+                <p style="top: 59%; left: 20%;">{{nombre}}</p>
+                <p (click)="openPage('PerfilPage')" style="top: 40%; left: 20%;"><ion-icon name="md-person"></ion-icon> Perfil</p>
+            </div>        
+          </ion-toolbar>
+        </ion-header>
+        <!-- <div class="BtnMenu" style="background-color: #fff0">
+          <button style="width: 100%; text-align: left; background-color: #fff0; color: white">
+            <ion-icon name='appname-news'></ion-icon>
+            Noticias Div
+          </button>
+        </div> -->
+        <ion-list style="margin-top: 0px;" >
+          <button ion-item (click)="openPage('PrincipalPage')" style="background-color: #fff0; color: white; font-size: 16px; border: 0px;">
+            <ion-icon name='appname-news'  style="padding-right: 10%; height: 1.6rem;"></ion-icon>
+           Noticias
+          </button>
+        </ion-list>
+        <!-- <ion-list>
+          <button ion-item (click)="openPage('BlogPage')"   >
+            <ion-icon name='appname-blogs' ></ion-icon>
+            Voz Ciudadana
+          </button>
+        </ion-list> -->
+        <ion-list  >
+          <button ion-item (click)="openPage('ChatPage')" style="background-color: #fff0; color: white; font-size: 16px; border: 0px;">
+            <ion-icon name='ios-chatbubbles-outline' style="padding-right: 5%"></ion-icon>
+            Mensajes
+            <ion-badge item-end *ngIf="totalM > 0" >{{totalM}}</ion-badge>
+          </button>
+        </ion-list>
+        <!-- <ion-list style="margin-top: 0px;" >
+          <button ion-item (click)="openPage('AgendaPage')" style="background-color: #fff0; color: white; font-size: 16px; border: 0px;">
+            <ion-icon name='appname-news'  style="padding-right: 10%; height: 1.6rem;"></ion-icon>
+           Agenda
+          </button>
+        </ion-list> -->
+        <!-- <ion-list >
+          <button ion-item  style="background-color: #fff0; color: white; font-size: 16px; border: 0px;">
+            <ion-icon name='ios-pin-outline' style="padding-right: 5%"></ion-icon>
+            Directorio          
+          </button>
+        </ion-list>
+        <ion-list >
+          <button ion-item style="background-color: #fff0; color: white; font-size: 16px; border: 0px;">
+            <ion-icon name='ios-notifications-outline' style="padding-right: 5%"></ion-icon>
+            Clima          
+          </button>
+        </ion-list> -->
+        
+      <ion-footer style="background-color: #fff0;">
+        <ion-toolbar style="background-color: #fff0;">
+          <button ion-item (click)="logout()" style="background-color: #fff0; color: white" >
+            <ion-icon name="ios-log-out"  style="padding-right: 10%"></ion-icon>
+              Cerrar sesión
+          </button>
+        </ion-toolbar>
+      </ion-footer>
+      </ion-content>
+      
+    </ion-menu>
+  <!-- <ion-nav [root]="rootPage"></ion-nav> -->
+  <ion-nav id="nav" #fondo_Noti [root]="rootPage"></ion-nav>
+  
